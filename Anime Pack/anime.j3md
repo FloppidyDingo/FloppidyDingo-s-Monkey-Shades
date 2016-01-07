@@ -3,7 +3,6 @@ MaterialDef Anime{
     MaterialParameters {
         Texture2D m_DiffuseMap
         Texture2D m_SpecularMap
-        Float m_Shininess
     }
 
     Technique {
