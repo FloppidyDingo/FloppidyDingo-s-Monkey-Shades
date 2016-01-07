@@ -2,23 +2,23 @@ uniform vec4 g_LightPosition;
 uniform vec4 g_AmbientLightColor;
 uniform sampler2D m_DiffuseMap;
 uniform sampler2D m_SpecularMap;
-uniform float m_IntensityShift;
-uniform float m_Shade;
 
 varying vec2 texCoord;
+varying vec3 normal;
+varying vec3 pos;
 varying float x;
 varying float y;
 varying float z;
+varying float intensity;
 
 void main()
 {
     vec2 newTexCoord = texCoord;
     vec4 specularColor = texture2D(m_SpecularMap, newTexCoord);
     vec4 Diffuse = texture2D(m_DiffuseMap, newTexCoord);
-    float intensity;
     float shade = 1;
-    intensity = dot(g_LightPosition.xyz, vec3(x, y, z));
     vec4 ambicolor = vec4(g_AmbientLightColor.rgb * Diffuse.rgb * specularColor.rgb, 1.0);
+    float intensity = dot(g_LightPosition.xyz, normalize(normal));
     if (intensity < 0){
         shade = 0.5;
     }
