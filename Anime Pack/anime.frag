@@ -10,6 +10,7 @@ varying float x;
 varying float y;
 varying float z;
 varying float intensity;
+varying vec4 color;
 
 void main()
 {
@@ -31,5 +32,5 @@ void main()
     }
     vec3 shadeColor;
     shadeColor = Diffuse.rgb * specularColor.rgb * shade;
-    gl_FragColor = vec4(ambicolor.rgb + shadeColor, 1.0);
+    gl_FragColor = vec4(ambicolor.rgb + shadeColor + color, 1.0);
 }
