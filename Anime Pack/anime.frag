@@ -21,12 +21,14 @@ void main()
     vec4 Diffuse = texture2D(m_DiffuseMap, newTexCoord);
     float shade = 1;
     vec4 ambicolor = vec4(g_AmbientLightColor.rgb * Diffuse.rgb * specularColor.rgb, 1.0);
-
+    
+    //directional light
     float intensity = dot(g_LightPosition.xyz, n);
     if (intensity < 0){
         shade = 0.5;
     }
-
+    
+    //point Light
     if(g_LightPosition.w != -1){
         float dist = sqrt(pow(abs(x - g_LightPosition.x), 2) + pow(abs(y - g_LightPosition.y), 2) + pow(abs(z - g_LightPosition.z), 2));
         float Distance = 1 / g_LightPosition.w;
@@ -35,8 +37,8 @@ void main()
         }
     }
     
+    //Spot Light
     float spotFallOff = 1.0;
-    // allow use of control flow
     if(g_LightDirection.w != 0.0){
         vec3 lightVec = g_LightPosition.xyz;
         vec3 L = normalize(lightVec.xyz);
@@ -46,13 +48,12 @@ void main()
         float outerAngleCos = fract(g_LightDirection.w);
         float innerMinusOuter = innerAngleCos - outerAngleCos;
         spotFallOff = (curAngleCos - outerAngleCos) / innerMinusOuter;
-        if(spotFallOff <= 0.0){
-            
+        //spotFallOff = clamp(spotFallOff, step(g_LightDirection.w, 0.001), 1.0);
+        if(spotFallOff >= 0.0){
+            shade = 0.5;
         }
     }
-    spotFallOff = clamp(spotFallOff, step(g_LightDirection.w, 0.001), 1.0);
-
     vec3 shadeColor;
     shadeColor = Diffuse.rgb * specularColor.rgb * shade;
-    gl_FragColor = vec4((ambicolor.rgb + shadeColor) * color, 1.0);
+    gl_FragColor = normalize(vec4((ambicolor.rgb + (shadeColor * color.rgb)), 1.0));
 }
