@@ -1,2 +1,2 @@
-# FloppidyDingo's Mokey Shades
+# FloppidyDingo's Monkey Shades
 A shader pack for the JMonkey Engine. So far only contains a pack for Anime shading. Packs to come: Monochrome and Camera Static.
