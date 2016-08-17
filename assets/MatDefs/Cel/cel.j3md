@@ -1,4 +1,4 @@
-MaterialDef Anime{
+MaterialDef Cel{
 
     MaterialParameters {
         Texture2D m_DiffuseMap
@@ -9,8 +9,8 @@ MaterialDef Anime{
 
         LightMode MultiPass
 
-        VertexShader GLSL100:   Shaders/Anime/anime.vert
-        FragmentShader GLSL100: Shaders/Anime/anime.frag
+        VertexShader GLSL100:   Shaders/Cel/cel.vert
+        FragmentShader GLSL100: Shaders/Cel/cel.frag
 
         WorldParameters {
             WorldViewProjectionMatrix
