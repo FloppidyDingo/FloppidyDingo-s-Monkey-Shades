@@ -9,8 +9,8 @@ MaterialDef Cel{
 
         LightMode MultiPass
 
-        VertexShader GLSL100:   Shaders/Cel/cel.vert
-        FragmentShader GLSL100: Shaders/Cel/cel.frag
+        VertexShader GLSL100:   Dingo/Shaders/Cel/cel.vert
+        FragmentShader GLSL100: Dingo/Shaders/Cel/cel.frag
 
         WorldParameters {
             WorldViewProjectionMatrix

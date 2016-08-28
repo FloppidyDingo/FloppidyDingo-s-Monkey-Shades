@@ -11,7 +11,7 @@ MaterialDef Default GUI {
         LightMode MultiPass
 
         VertexShader GLSL150:   Common/MatDefs/Post/Post15.vert
-        FragmentShader GLSL150: Shaders/Border/Border15.frag
+        FragmentShader GLSL150: Dingo/Shaders/Border/Border15.frag
 
         WorldParameters {
         }
@@ -26,7 +26,7 @@ MaterialDef Default GUI {
         LightMode MultiPass
 
         VertexShader GLSL100:   Common/MatDefs/Post/Post.vert
-        FragmentShader GLSL100: Shaders/Border/Border.frag
+        FragmentShader GLSL100: Dingo/Shaders/Border/Border.frag
 
         WorldParameters {  
         }
