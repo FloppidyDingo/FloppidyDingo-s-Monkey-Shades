@@ -1,0 +1,37 @@
+MaterialDef Default GUI {
+
+    MaterialParameters {
+        Int NumSamples
+        Int NumSamplesDepth
+        Texture2D Texture
+        Texture2D lighting
+        Boolean bloom
+        Float exposure
+    }
+
+    Technique {
+        LightMode MultiPass
+
+        VertexShader GLSL150:   Common/MatDefs/Post/Post15.vert
+        FragmentShader GLSL150: Dingo/Shaders/EnhancedLighting/EnhancedLighting15.frag
+
+        WorldParameters {
+        }
+
+        Defines {
+            RESOLVE_MS : NumSamples
+        }
+
+    }
+
+    Technique {
+        LightMode MultiPass
+
+        VertexShader GLSL100:   Common/MatDefs/Post/Post.vert
+        FragmentShader GLSL100: Dingo/Shaders/EnhancedLighting/EnhancedLighting.frag
+
+        WorldParameters {  
+        }
+
+    }
+}
