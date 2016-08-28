@@ -25,8 +25,8 @@ public class BorderFilter extends Filter {
      */
     @Override
     protected void initFilter(final AssetManager manager, final RenderManager renderManager, final ViewPort vp, final int w, final int h) {
-        material = new Material(manager, "MatDefs/Border/Border.j3md");
-        glare = manager.loadTexture("Textures/EnhancedLighting/glare.png");
+        material = new Material(manager, "Dingo/MatDefs/Border/Border.j3md");
+        glare = manager.loadTexture("Dingo/Textures/Border/default.png");
 
         material.setTexture("border", glare);
         
